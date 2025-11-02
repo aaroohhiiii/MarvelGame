@@ -1,0 +1,108 @@
+/* Global TVA Theme Variables */
+:root {
+  --tva-orange: #F68C1F;
+  --tva-teal: #00FFC8;
+  --tva-bg: #0B0B0B;
+  --tva-dark: #1C0A00;
+  --tva-purple: #2E003E;
+  --text-white: #FFFFFF;
+  --text-gray: #CCCCCC;
+  
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Share Tech Mono', monospace;
+}
+
+/* Custom Glowing Cursor */
+* {
+  cursor: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, var(--tva-orange) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  animation: cursor-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes cursor-glow {
+  0% { 
+    box-shadow: 0 0 10px var(--tva-orange), 0 0 20px var(--tva-orange);
+    transform: scale(1);
+  }
+  100% { 
+    box-shadow: 0 0 20px var(--tva-orange), 0 0 30px var(--tva-orange);
+    transform: scale(1.1);
+  }
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, var(--tva-bg) 0%, var(--tva-dark) 50%, var(--tva-purple) 100%);
+  color: var(--text-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer Styles */
+.footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(246, 140, 31, 0.2);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.tva-clock {
+  font-size: 1.2rem;
+  color: var(--tva-orange);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}

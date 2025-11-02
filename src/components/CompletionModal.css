@@ -1,0 +1,223 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: modal-fadeIn 0.5s ease-out;
+}
+
+@keyframes modal-fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, var(--tva-bg) 0%, var(--tva-dark) 100%);
+  border: 3px solid var(--tva-orange);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 50px rgba(246, 140, 31, 0.5),
+    inset 0 0 50px rgba(246, 140, 31, 0.1);
+  animation: modal-slideIn 0.6s ease-out 0.2s both;
+}
+
+@keyframes modal-slideIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.completion-animation {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.tva-symbol {
+  font-size: 4rem;
+  color: var(--tva-orange);
+  margin-bottom: 1rem;
+  animation: symbol-rotate 3s linear infinite;
+}
+
+@keyframes symbol-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.completion-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--tva-orange);
+  margin-bottom: 1rem;
+  text-shadow: 
+    0 0 20px var(--tva-orange),
+    0 0 40px var(--tva-orange);
+  animation: title-flicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes title-flicker {
+  0%, 90% { opacity: 1; }
+  95% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.completion-message {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--tva-teal);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px var(--tva-teal);
+}
+
+.temporal-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--tva-orange);
+  border-radius: 50%;
+  animation: particle-float 3s linear infinite;
+}
+
+.particle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 4s;
+}
+
+.particle:nth-child(2) {
+  left: 30%;
+  animation-delay: 0.8s;
+  animation-duration: 3.5s;
+}
+
+.particle:nth-child(3) {
+  left: 50%;
+  animation-delay: 1.6s;
+  animation-duration: 4.2s;
+}
+
+.particle:nth-child(4) {
+  left: 70%;
+  animation-delay: 2.4s;
+  animation-duration: 3.8s;
+}
+
+.particle:nth-child(5) {
+  left: 90%;
+  animation-delay: 3.2s;
+  animation-duration: 4.5s;
+}
+
+@keyframes particle-float {
+  0% {
+    top: 100%;
+    opacity: 0;
+    transform: scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    top: -10%;
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, var(--tva-orange) 0%, #e07a1a 100%);
+  border: 2px solid var(--tva-orange);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  color: var(--tva-bg);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.restart-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.restart-btn:hover::before {
+  left: 100%;
+}
+
+.restart-btn:hover {
+  background: linear-gradient(135deg, #e07a1a 0%, var(--tva-orange) 100%);
+  box-shadow: 
+    0 0 25px rgba(246, 140, 31, 0.6),
+    inset 0 0 25px rgba(246, 140, 31, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .completion-title {
+    font-size: 2rem;
+  }
+  
+  .completion-message {
+    font-size: 1rem;
+  }
+  
+  .tva-symbol {
+    font-size: 3rem;
+  }
+  
+  .restart-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}

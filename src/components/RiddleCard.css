@@ -1,0 +1,212 @@
+.riddle-card {
+  background: linear-gradient(135deg, rgba(246, 140, 31, 0.1) 0%, rgba(0, 255, 200, 0.05) 100%);
+  border: 2px solid rgba(246, 140, 31, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.riddle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(246, 140, 31, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.riddle-card:hover::before {
+  left: 100%;
+}
+
+.riddle-card:hover {
+  border-color: var(--tva-orange);
+  box-shadow: 
+    0 0 20px rgba(246, 140, 31, 0.3),
+    inset 0 0 20px rgba(246, 140, 31, 0.1);
+  transform: translateY(-2px);
+}
+
+.riddle-card.solved {
+  background: linear-gradient(135deg, rgba(246, 140, 31, 0.2) 0%, rgba(0, 255, 200, 0.1) 100%);
+  border-color: var(--tva-orange);
+  box-shadow: 
+    0 0 30px rgba(246, 140, 31, 0.4),
+    inset 0 0 30px rgba(246, 140, 31, 0.1);
+}
+
+.riddle-card.revealing {
+  animation: reveal-animation 0.6s ease-out;
+}
+
+@keyframes reveal-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.riddle-card.wrong-answer {
+  animation: wrong-shake 0.5s ease-out;
+  border-color: #ff4444;
+}
+
+@keyframes wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.riddle-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.riddle-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.riddle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.riddle-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(246, 140, 31, 0.5);
+  border-radius: 6px;
+  padding: 0.75rem;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.riddle-input:focus {
+  outline: none;
+  border-color: var(--tva-orange);
+  box-shadow: 0 0 10px rgba(246, 140, 31, 0.3);
+}
+
+.riddle-input::placeholder {
+  color: var(--text-gray);
+}
+
+.decrypt-btn {
+  background: linear-gradient(135deg, var(--tva-orange) 0%, #e07a1a 100%);
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--tva-bg);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.decrypt-btn:hover {
+  background: linear-gradient(135deg, #e07a1a 0%, var(--tva-orange) 100%);
+  box-shadow: 0 0 15px rgba(246, 140, 31, 0.5);
+  transform: translateY(-1px);
+}
+
+.solved-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.placeholder-image {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--tva-orange) 0%, var(--tva-teal) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--tva-bg);
+  text-align: center;
+  padding: 0.5rem;
+  box-shadow: 0 0 20px rgba(246, 140, 31, 0.4);
+  animation: image-reveal 0.6s ease-out;
+}
+
+@keyframes image-reveal {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stabilized-label {
+  background: rgba(0, 255, 200, 0.2);
+  border: 1px solid var(--tva-teal);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--tva-teal);
+  animation: stabilized-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes stabilized-glow {
+  0% { 
+    box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+  }
+  100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .riddle-card {
+    min-height: 180px;
+    padding: 1rem;
+  }
+  
+  .riddle-text {
+    font-size: 0.8rem;
+  }
+  
+  .placeholder-image {
+    width: 80px;
+    height: 80px;
+    font-size: 0.7rem;
+  }
+}
