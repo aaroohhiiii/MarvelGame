@@ -51,7 +51,7 @@ const TimelineMode = ({ riddles, timelineOrder, setTimelineOrder, onValidation }
     <section className="timeline-section">
       <div className="timeline-header">
         <h2>ARRANGE THE SACRED TIMELINE</h2>
-        <p>Drag the fragments into chronological order</p>
+        <p>Drag the fragments into chronological order of the Marvel Timeline of things.(not when the movie released but the time in which the movie is set.)  </p>
       </div>
 
       <div className="timeline-track">
