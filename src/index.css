@@ -48,11 +48,6 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Custom Cursor Implementation */
-* {
-  cursor: none !important;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -60,51 +55,16 @@ body {
   position: relative;
 }
 
-/* Cursor Element */
-.custom-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, #F68C1F 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  animation: cursor-glow 2s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
-}
-
-@keyframes cursor-glow {
-  0% { 
-    box-shadow: 0 0 10px #F68C1F, 0 0 20px #F68C1F;
-    transform: scale(1);
-  }
-  100% { 
-    box-shadow: 0 0 20px #F68C1F, 0 0 30px #F68C1F, 0 0 40px #F68C1F;
-    transform: scale(1.2);
-  }
-}
-
-.custom-cursor.clicked {
-  animation: cursor-click 0.2s ease-out;
-}
-
-@keyframes cursor-click {
-  0% { transform: scale(1.2); }
-  50% { transform: scale(0.8); }
-  100% { transform: scale(1.2); }
-}
-
 /* Reset button styles */
 button {
   border: none;
   background: none;
   font-family: inherit;
-  cursor: none;
+  cursor: pointer;
 }
 
 input {
-  cursor: none;
+  cursor: text;
 }
 
 /* Scrollbar Styling */
