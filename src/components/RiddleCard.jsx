@@ -44,7 +44,19 @@ const RiddleCard = ({ riddle, isSolved, onSolved }) => {
       ) : (
         <div className="solved-content">
           <div className="image-container">
-            <div className="placeholder-image">
+            <img 
+              src={riddle.image} 
+              alt={riddle.answer}
+              className="riddle-image"
+              onLoad={() => console.log('Image loaded successfully:', riddle.image)}
+              onError={(e) => {
+                console.log('Image failed to load:', riddle.image);
+                console.log('Full URL attempted:', e.target.src);
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="placeholder-fallback" style={{ display: 'none' }}>
               {riddle.answer}
             </div>
           </div>

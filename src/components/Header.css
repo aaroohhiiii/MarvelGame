@@ -2,8 +2,14 @@
   position: relative;
   padding: 3rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--tva-bg) 0%, var(--tva-dark) 100%);
-  border-bottom: 2px solid var(--tva-orange);
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(246, 140, 31, 0.5);
+  border-radius: 15px;
+  margin: 1rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
@@ -62,8 +68,8 @@
 }
 
 .tva-logo {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
   margin-bottom: 0;
   filter: drop-shadow(0 0 10px var(--tva-orange));
   animation: logo-float 3s ease-in-out infinite alternate;
@@ -91,8 +97,9 @@
     0 0 20px var(--tva-orange),
     0 0 40px var(--tva-orange),
     0 0 60px var(--tva-orange);
-  animation: title-glow 2s ease-in-out infinite alternate;
+  animation: title-glow 2s ease-in-out infinite alternate, temporal-distort 12s linear infinite;
   letter-spacing: 0.1em;
+  position: relative;
 }
 
 @keyframes title-glow {
@@ -106,6 +113,27 @@
       0 0 30px var(--tva-orange),
       0 0 50px var(--tva-orange),
       0 0 70px var(--tva-orange);
+  }
+}
+
+@keyframes temporal-distort {
+  0%, 95% { 
+    transform: translateX(0) scaleX(1);
+  }
+  96% { 
+    transform: translateX(-2px) scaleX(1.02);
+  }
+  97% { 
+    transform: translateX(1px) scaleX(0.98);
+  }
+  98% { 
+    transform: translateX(0) scaleX(1.01);
+  }
+  99% { 
+    transform: translateX(0) scaleX(0.99);
+  }
+  100% { 
+    transform: translateX(0) scaleX(1);
   }
 }
 

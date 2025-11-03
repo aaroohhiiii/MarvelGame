@@ -62,6 +62,57 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+/* Global page glitch effect */
+@keyframes page-glitch {
+  0%, 98% { 
+    transform: translateX(0);
+  }
+  1% { 
+    transform: translateX(-2px);
+  }
+  2% { 
+    transform: translateX(2px);
+  }
+  3% { 
+    transform: translateX(0);
+  }
+  96% {
+    transform: translateX(1px);
+  }
+  97% {
+    transform: translateX(-1px);
+  }
+}
+
+/* Random glitch overlay */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 97%,
+    rgba(246, 140, 31, 0.03) 98%,
+    rgba(0, 255, 200, 0.03) 99%,
+    transparent 100%
+  );
+  animation: glitch-lines 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes glitch-lines {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-100%); }
+  20% { transform: translateX(100%); }
+  30% { transform: translateX(0); }
+  100% { transform: translateX(0); }
 }
 
 /* Footer Styles */
@@ -84,6 +135,13 @@ body {
   color: var(--text-gray);
 }
 
+.footer-rights {
+  font-size: 0.8rem;
+  color: var(--tva-teal);
+  font-style: italic;
+  opacity: 0.8;
+}
+
 .tva-clock {
   font-size: 1.2rem;
   color: var(--tva-orange);
@@ -104,5 +162,9 @@ body {
   
   .footer-text {
     font-size: 0.8rem;
+  }
+  
+  .footer-rights {
+    font-size: 0.7rem;
   }
 }

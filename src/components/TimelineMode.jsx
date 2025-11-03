@@ -68,10 +68,13 @@ const TimelineMode = ({ riddles, timelineOrder, setTimelineOrder, onValidation }
             >
               <div className="timeline-card-content">
                 <div className="timeline-image">
-                  {riddle.answer}
+                  <img 
+                    src={riddle.image} 
+                    alt={riddle.answer}
+                    className="timeline-character-image"
+                  />
                 </div>
                 <div className="timeline-info">
-                  <span className="timeline-period">{riddle.timelinePeriod}</span>
                   <span className="timeline-title">{riddle.answer}</span>
                 </div>
               </div>
