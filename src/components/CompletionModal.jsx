@@ -9,9 +9,10 @@ const CompletionModal = ({ onRestart }) => {
           <div className="tva-symbol">⧖</div>
           <h1 className="completion-title">TIMELINE STATUS: RESTORED</h1>
           <p className="completion-message">
-            Agent, the multiverse stabilizes once more.
+            Agent, the multiverse stabilizes once more. 
+            Contact the GDG team at you node !
             <br />
-            The Sacred Timeline flows as intended.
+            The Sacred Timeline flows as intended
           </p>
           
           {/* Heroes Gallery - Timeline Restored */}
@@ -43,7 +44,7 @@ const CompletionModal = ({ onRestart }) => {
           </div>
         </div>
         <button onClick={onRestart} className="restart-btn">
-          RESTART MISSION
+          Congratulations !
         </button>
       </div>
     </div>
